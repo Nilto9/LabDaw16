@@ -1,0 +1,182 @@
+<app-navbar></app-navbar>
+<section class="content">
+  <div class="container-fluid">
+    <div class="row m-t-sm">
+      <div class="col-md-15">
+        <div class="panel">
+          <div class="panel-body">
+            <div class="col-md-12 col-sm-12" id="form" style="display: block">
+              <div class="panel panel-filled">
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <h5 class="m-t-xs">Ingreso de vuelo</h5>
+                    </div>
+                  </div>
+                  <form [formGroup]="vueloForm" (ngSubmit)="agregarVuelo()">
+                    <div class="form-group">
+                      <label>Num-Vuelo</label>
+                      <input
+                        type="text"
+                        formControlName="num_vuelo"
+                        class="form-control"
+                        placeholder="Ingresar vuelo"
+                      />
+                      <div
+                        class="text-danger"
+                        *ngIf="
+                          vueloForm.get('num_vuelo')?.hasError('required') &&
+                          vueloForm.get('num_vuelo')?.touched
+                        "
+                      >
+                        <span
+                          >El numero vuelo <strong>es obligatorio</strong></span
+                        >
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Origen</label>
+                      <input
+                        type="text"
+                        formControlName="origen"
+                        class="form-control"
+                        placeholder="Ingresar Origen"
+                      />
+                      <div
+                        class="text-danger"
+                        *ngIf="
+                          vueloForm.get('origen')?.hasError('required') &&
+                          vueloForm.get('origen')?.touched
+                        "
+                      >
+                        <span>La origen <strong>es obligatoria</strong></span>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Destino</label>
+                      <input
+                        type="text"
+                        formControlName="destino"
+                        class="form-control"
+                        placeholder="Ingresar destino"
+                      />
+                      <div
+                        class="text-danger"
+                        *ngIf="
+                          vueloForm.get('destino')?.hasError('required') &&
+                          vueloForm.get('destino')?.touched
+                        "
+                      >
+                        <span>El destino <strong>es obligatoria</strong></span>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Fecha</label>
+                      <input
+                        type="text"
+                        formControlName="fecha"
+                        class="form-control"
+                        placeholder="Ingresar fecha"
+                      />
+                      <div
+                        class="text-danger"
+                        *ngIf="
+                          vueloForm.get('fecha')?.hasError('required') &&
+                          vueloForm.get('fecha')?.touched
+                        "
+                      >
+                        <span>La fecha <strong>es obligatorio</strong></span>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Piloto</label>
+                      <select formControlName="piloto" class="form-control">
+                        <option value="">Seleccionar piloto</option>
+                        <option
+                          *ngFor="let piloto of listPilotos"
+                          [value]="piloto._id"
+                        >
+                          {{ piloto.nombre }}
+                        </option>
+                      </select>
+                      <div
+                        class="text-danger"
+                        *ngIf="
+                          vueloForm.get('piloto')?.hasError('required') &&
+                          vueloForm.get('piloto')?.touched
+                        "
+                      >
+                        <span>El piloto <strong>es obligatorio</strong></span>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Avion</label>
+                      <select formControlName="avion" class="form-control">
+                        <option value="">Seleccionar Avion</option>
+                        <option
+                          *ngFor="let avion of listAviones"
+                          [value]="avion._id"
+                        >
+                          {{ avion.codigo }}
+                        </option>
+                      </select>
+                      <div
+                        class="text-danger"
+                        *ngIf="
+                          vueloForm.get('avion')?.hasError('required') &&
+                          vueloForm.get('avion')?.touched
+                        "
+                      >
+                        <span>El avion <strong>es obligatorio</strong></span>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label>Miembro</label>
+                      <select formControlName="miembro" class="form-control">
+                        <option value="">Seleccionar Miembro </option>
+                        <option
+                          *ngFor="let miembro of listMiembros"
+                          [value]="miembro._id"
+                        >
+                          {{ miembro.nombre }}
+                        </option>
+                      </select>
+                      <div
+                        class="text-danger"
+                        *ngIf="
+                          vueloForm.get('miembro')?.hasError('required') &&
+                          vueloForm.get('miembro')?.touched
+                        "
+                      >
+                        <span>El miembro <strong>es obligatorio</strong></span>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-12 text-right">
+                      <div class="panel-body buttons-margin">
+                        <button
+                          type="submit"
+                          [disabled]="vueloForm.invalid"
+                          class="btn btn-w-md btn-success"
+                        >
+                          Guardar</button
+                        >&nbsp;&nbsp;
+                        <button
+                          class="btn btn-w-md btn-warning"
+                          routerLink="/listar-vuelos"
+                        >
+                          Cancelar
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

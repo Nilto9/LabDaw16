@@ -1,0 +1,49 @@
+<app-navbar></app-navbar>
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row m-t-sm">
+      <div class="col-md-15">
+        <div class="panel">
+          <div class="panel-body">
+            <div class="col-md-12 col-sm-12" id="form" style="display:block;">
+              <div class="panel panel-filled">
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-sm-12"><h5 class="m-t-xs">Ingreso miembro</h5></div>
+                  </div>
+                  <form [formGroup]="miembroForm" (ngSubmit)="agregarMiembro()">
+                    <div class="form-group">
+                      <label>Codigo</label>
+                      <input type="text" formControlName="codigo" class="form-control" placeholder="Ingresar Codigo">
+                      <div class="text-danger"
+                        *ngIf="miembroForm.get('codigo')?.hasError('required') && miembroForm.get('codigo')?.touched">
+                        <span>El Codigo <strong>es obligatorio</strong></span>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Integrante de tripulación</label>
+                      <input type="text" formControlName="nombre" class="form-control" placeholder="Ingresar Nombre">
+                      <div class="text-danger"
+                        *ngIf="miembroForm.get('nombre')?.hasError('required') && miembroForm.get('nombre')?.touched">
+                        <span>El Nombre <strong>es obligatorio</strong></span>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-12 text-right">
+                      <div class="panel-body buttons-margin">
+                        <button type="submit" [disabled]="miembroForm.invalid" class="btn btn-w-md btn-success">Guardar</button>
+                        &nbsp;&nbsp;
+                        <button class="btn btn-w-md btn-warning" routerLink="/listar-miembros">Cancelar</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

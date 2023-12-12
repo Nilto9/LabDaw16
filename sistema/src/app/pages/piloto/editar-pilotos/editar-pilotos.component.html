@@ -1,0 +1,55 @@
+<app-navbar></app-navbar>
+<section class="content">
+  <div class="container-fluid">
+    <div class="row m-t-sm">
+      <div class="col-md-15">
+        <div class="panel">
+          <div class="panel-body">
+            <div class="col-md-12 col-sm-12" id="form" style="display:block;">
+              <div class="panel panel-filled">
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-sm-12"><h5 class="m-t-xs">Editar Piloto</h5></div>
+                  </div>
+                  <form [formGroup]="pilotoForm" (ngSubmit)="actualizarPiloto()">
+                    <div class="form-group">
+                      <label>Codigo</label>
+                      <input type="text" formControlName="codigo" class="form-control" placeholder="Ingresar Codigo">
+                      <div class="text-danger"
+                        *ngIf="pilotoForm.get('codigo')?.hasError('required') && pilotoForm.get('codigo')?.touched">
+                        <span>El codigo piloto <strong>es obligatorio</strong></span>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Nombre</label>
+                      <input type="text" formControlName="nombre" class="form-control" placeholder="Ingresar Nombre">
+                      <div class="text-danger"
+                        *ngIf="pilotoForm.get('nombre')?.hasError('required') && pilotoForm.get('nombre')?.touched">
+                        <span>El nombre <strong>es obligatorio</strong></span>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Numero de hrs de vuelo</label>
+                      <input type="text" formControlName="hora_vuelo" class="form-control" placeholder="Ingresar horas vuelo">
+                      <div class="text-danger"
+                        *ngIf="pilotoForm.get('hora_vuelo')?.hasError('required') && pilotoForm.get('hora_vuelo')?.touched">
+                        <span>Las horas de vuelo <strong>son obligatorias</strong></span>
+                      </div>
+                    </div>
+                    <div class="col-sm-12 text-right">
+                      <div class="panel-body buttons-margin">
+                        <button type="submit" [disabled]="pilotoForm.invalid" class="btn btn-w-md btn-success">Guardar</button>
+                        &nbsp;&nbsp;
+                        <button class="btn btn-w-md btn-warning" routerLink="/listar-pilotos">Cancelar</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
